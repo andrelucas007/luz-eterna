@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luz Eterna</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?prayer') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+        }
+        .comments-section, .topics-section {
+            margin-top: 20px;
+        }
+        .comment-box, .topic-box {
+            background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+            color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .comment-box:hover, .topic-box:hover {
+            background: linear-gradient(135deg, #3a3a3a, #575757);
+        }
+        .hidden {
+            display: none;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 10px;
+            resize: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ffdd44;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Luz Eterna</h1>
+        <p>Deixe seu pedido de oração e ore pelos outros.</p>
+        
+        <div class="comments-section">
+            <h2>Pedidos de Oração</h2>
+            <textarea id="comment" placeholder="Escreva seu pedido de oração..."></textarea>
+            <button onclick="addComment()">Enviar</button>
+            <div id="comments"></div>
+        </div>
+        
+        <div class="topics-section">
+            <h2>Ajuda Espiritual</h2>
+            <div class="topic-box" onclick="toggleVerses('ansiedade')">Ansiedade</div>
+            <div class="hidden" id="ansiedade">Filipenses 4:6-7 - "Não andem ansiosos por coisa alguma..."</div>
+            
+            <div class="topic-box" onclick="toggleVerses('raiva')">Raiva</div>
+            <div class="hidden" id="raiva">Efésios 4:26 - "Quando vocês ficarem irados, não pequem..."</div>
+            
+            <div class="topic-box" onclick="toggleVerses('tristeza')">Tristeza</div>
+            <div class="hidden" id="tristeza">Salmos 34:18 - "O Senhor está perto dos que têm o coração quebrantado..."</div>
+            
+            <div class="topic-box" onclick="toggleVerses('medo')">Medo</div>
+            <div class="hidden" id="medo">Isaías 41:10 - "Não temas, pois estou com você..."</div>
+            
+            <div class="topic-box" onclick="toggleVerses('solidão')">Solidão</div>
+            <div class="hidden" id="solidão">Deuteronômio 31:6 - "O Senhor, seu Deus, vai com você; Ele nunca o deixará..."</div>
+        </div>
+    </div>
+    
+    <script>
+        function addComment() {
+            let commentText = document.getElementById('comment').value;
+            if (commentText.trim() !== "") {
+                let commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment-box');
+                commentDiv.textContent = commentText;
+                document.getElementById('comments').appendChild(commentDiv);
+                document.getElementById('comment').value = "";
+            }
+        }
+        
+        function toggleVerses(id) {
+            let element = document.getElementById(id);
+            element.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
